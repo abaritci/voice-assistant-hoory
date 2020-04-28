@@ -18,6 +18,8 @@ router.get('/', auth, userService.getUsers);
 
 router.delete('/:id', auth, userService.deleteUsers);
 
+router.get('/:id', auth, userService.getUser);
+
 router.post('/register', function (req, res) {
   
   const {errors, isValid} = validateRegisterInput(req.body);

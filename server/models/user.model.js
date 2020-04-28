@@ -15,6 +15,15 @@ class UserModel {
   }
   
   /**
+   * Get User by id
+   * @param userId
+   * @returns {void|*|number|bigint}
+   */
+  getUser(userId) {
+    return this.userSchema.findOne({_id: userId});
+  }
+  
+  /**
    * Delete user by id
    * @param userId
    * @returns {*|void|boolean|Promise<boolean>|IDBRequest<undefined>}
