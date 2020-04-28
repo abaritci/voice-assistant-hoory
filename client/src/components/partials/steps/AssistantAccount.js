@@ -74,6 +74,7 @@ export default function AssistantAccount() {
   return (
     <StepContext.Consumer>
       {({
+          _id,
           firstName,
           lastName,
           email,
@@ -81,7 +82,10 @@ export default function AssistantAccount() {
           password_confirm,
           handleChange,
           registerUser,
-          errors
+          updateUser,
+          errors,
+          isAuthenticated,
+          isNewAssistant
         }) => (
         <div id='assistant-account' className={classes.root}>
           <div className={classes.section}>
@@ -95,10 +99,11 @@ export default function AssistantAccount() {
                     alignItems="center">
                 <Typography component="div">
                   <Box fontWeight="fontWeightBold" m={1}>
-                    Create your account
+                    {isAuthenticated ? isNewAssistant ? "Create account" : "Update account" : "Create your account"}
                   </Box>
                 </Typography>
               </Grid>
+              {!isAuthenticated &&
               <Grid container
                     direction="row"
                     justify="center"
@@ -111,13 +116,13 @@ export default function AssistantAccount() {
                     Sign up with Google
                   </Button>
                 </FormControl>
-              </Grid>
-              <Grid container
-                    direction="row"
-                    justify="center"
-                    alignItems="center">
+              </Grid>}
+              {!isAuthenticated && <Grid container
+                                         direction="row"
+                                         justify="center"
+                                         alignItems="center">
                 <Divider className={classes.divider}/> or <Divider className={classes.divider}/>
-              </Grid>
+              </Grid>}
               <Grid container
                     direction="row"
                     justify="center"
@@ -257,15 +262,15 @@ export default function AssistantAccount() {
                     <div className="invalid-feedback">{errors.password_confirm}</div>)}
                 </FormControl>
               </Grid>
-              <Grid container
-                    direction="row"
-                    justify="center"
-                    alignItems="center">
+              {!isAuthenticated && <Grid container
+                                         direction="row"
+                                         justify="center"
+                                         alignItems="center">
                 <ThemeProvider theme={theme}>
                   <Typography variant="subtitle1">By registering an account with us you agre to the PP and
                     T&C</Typography>
                 </ThemeProvider>
-              </Grid>
+              </Grid>}
               <Grid container
                     direction="row"
                     justify="center"
@@ -273,17 +278,17 @@ export default function AssistantAccount() {
                 <Typography component="div">
                   <ThemeProvider theme={theme}>
                     <Button variant="contained" color="primary" onClick={() => {
-                      registerUser();
+                      isNewAssistant ? registerUser() : updateUser(_id);
                     }}>
-                      Create account
+                      {isAuthenticated ? isNewAssistant ? "Create account" : "Update account" : "Create your account"}
                     </Button>
                   </ThemeProvider>
                 </Typography>
               </Grid>
-              <Grid container
-                    direction="row"
-                    justify="center"
-                    alignItems="center">
+              {!isAuthenticated && <Grid container
+                                         direction="row"
+                                         justify="center"
+                                         alignItems="center">
                 <ThemeProvider theme={theme}>
                   <Typography variant="subtitle1">Have an account?
                   </Typography>
@@ -293,7 +298,7 @@ export default function AssistantAccount() {
                     </Link>
                   </Typography>
                 </ThemeProvider>
-              </Grid>
+              </Grid>}
             </Grid>
           </div>
         </div>

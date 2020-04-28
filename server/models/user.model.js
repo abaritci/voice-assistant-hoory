@@ -24,6 +24,15 @@ class UserModel {
   }
   
   /**
+   * Edit user by id and data
+   * @param userId
+   * @param data
+   */
+  editUser(userId, data) {
+    return this.userSchema.findByIdAndUpdate({_id: userId},data);
+  }
+  
+  /**
    * Delete user by id
    * @param userId
    * @returns {*|void|boolean|Promise<boolean>|IDBRequest<undefined>}

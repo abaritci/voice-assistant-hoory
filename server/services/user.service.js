@@ -13,6 +13,11 @@ class User_service {
       res.json(user);
     }).catch(error => next(error));
   }
+  editUser(req, res, next) {
+    userModel.editUser(req.params.id, req.body).then((user) => {
+      res.json(user);
+    }).catch(error => next(error));
+  }
   deleteUsers(req, res, next) {
     userModel.deleteUsers(req.params.id).then((user) => {
       res.json(user);
