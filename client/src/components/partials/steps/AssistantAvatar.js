@@ -42,7 +42,7 @@ export default function AssistantAvatar(props) {
   };
   return (
     <div>
-      <Avatar src={isSelected ? selectedAvatars[sex][color - 1] : defaultAvatars[sex][color - 1]}/>
+      <Avatar src={isSelected ? selectedAvatars[sex][parseInt(color)-1] : defaultAvatars[sex][parseInt(color) - 1]}/>
     </div>
   
   );

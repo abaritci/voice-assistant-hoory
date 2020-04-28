@@ -75,10 +75,12 @@ class Home extends Component {
   
   componentDidUpdate(prevProps, prevState, snapshot) {
     if (prevProps.user !== this.props.user) {
-      const {_id, name, sex, color, firstName, lastName, email} = this.props.user;
-      this.setState({_id, name, sex, color, firstName, lastName, email, password: '', password_confirm: ''})
       if (this.state.step === 'account') {
         this.changeStep('finish')
+      }
+      else {
+        const {_id, name, sex, color, firstName, lastName, email} = this.props.user;
+        this.setState({_id, name, sex, color, firstName, lastName, email, password: '', password_confirm: ''})
       }
     }
   }
