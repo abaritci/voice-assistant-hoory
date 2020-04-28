@@ -1,4 +1,4 @@
-import {CREATE_USER, GET_USERS, DELETE_USERS} from '../actions/types';
+import {CREATE_USER, GET_USERS, DELETE_USERS, GET_USER} from '../actions/types';
 
 const initialState = {
   users : [],
@@ -16,6 +16,11 @@ export default function(state = initialState, action ) {
       return {
         ...state,
         users: action.payload
+      }
+      case GET_USER:
+      return {
+        ...state,
+        user: action.payload
       }
     case DELETE_USERS:{
       return {

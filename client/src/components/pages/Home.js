@@ -4,16 +4,17 @@ import Sidebar from "../partials/Sidebar";
 import StepContent from "../partials/StepContent";
 import {connect} from "react-redux";
 import {registerUser} from "../../actions/authentication";
+import {getUser} from "../../actions/user/get_user.action";
 import PropTypes from "prop-types";
 import {withStyles} from '@material-ui/core/styles';
-
-export const StepContext = React.createContext(null);
+import {StepContext} from "../../context/StepContext";
 
 const styles = (theme) => (
   {});
 
 class Home extends Component {
   state = {
+    _id: null,
     step: 'name',
     name: '',
     sex: 'female',
@@ -46,14 +47,25 @@ class Home extends Component {
     this.props.registerUser(user);
   }
   
+  componentDidMount() {
+    if (this.props.match.params.id) {
+      this.props.getUser(this.props.match.params.id);
+    }
+  }
+  
   componentDidUpdate(prevProps, prevState, snapshot) {
     if (prevProps.user !== this.props.user) {
-      this.changeStep('finish');
+      const {_id, name, sex, color, firstName, lastName, email, password} = this.props.user;
+      this.setState({_id, name, sex, color, firstName, lastName, email, password, password_confirm: ''})
+      if (this.state.step === 'account') {
+        this.changeStep('finish')
+      }
     }
   }
   
   render() {
     const {
+      _id,
       step,
       name,
       sex,
@@ -69,6 +81,7 @@ class Home extends Component {
       <StepContext.Provider
         value={
           {
+            _id,
             step,
             name,
             sex,
@@ -103,13 +116,13 @@ const mapStateToProps = state => (
   {
     auth: state.authReducer,
     errors: state.errorReducer,
-    user: state.userReducer
+    user: state.userReducer.user
   });
 
 export default compose(
   withStyles(styles, {
     name: 'Home',
   }),
-  connect(mapStateToProps, {registerUser}
+  connect(mapStateToProps, {registerUser, getUser}
   ),
 )(Home);

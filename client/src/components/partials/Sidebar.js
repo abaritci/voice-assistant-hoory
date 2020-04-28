@@ -11,7 +11,7 @@ class Sidebar extends Component {
     const {isAuthenticated} = this.props.auth;
     return (
       <div>
-        {!isAuthenticated && <nav id="sidebar">
+        {(isAuthenticated || !this.props.match.params.id) && <nav id="sidebar">
           <div className="sidebar-header">
             <img alt={'Hoory Logo White'} src={HooryLogoWhite}/>
           </div>

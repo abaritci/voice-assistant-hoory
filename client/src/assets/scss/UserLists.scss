@@ -3,3 +3,13 @@
     text-align: center;
   }
 }
+#add-assistant {
+  a.MuiButtonBase-root.MuiButton-root.MuiButton-outlined {
+    width: 100%;
+    background-color: #f7f7fa;
+    border: none;
+    border-radius: 3px;
+    color: #7e7e82;
+    text-transform: none;
+  }
+}

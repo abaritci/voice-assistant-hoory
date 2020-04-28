@@ -5,7 +5,7 @@ import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
 import {green} from "@material-ui/core/colors";
 import Box from "@material-ui/core/Box";
-import {StepContext} from "../../pages/Home";
+import {StepContext} from "../../../context/StepContext";
 import AssistantAvatar from "./AssistantAvatar";
 import Grid from "@material-ui/core/Grid";
 import {Emojione} from 'react-emoji-render';

@@ -8,7 +8,7 @@ import Box from "@material-ui/core/Box";
 import Button from "@material-ui/core/Button";
 import {green} from "@material-ui/core/colors";
 import '../../../assets/scss/AssistantName.scss';
-import {StepContext} from "../../pages/Home";
+import {StepContext} from "../../../context/StepContext";
 
 const useStyles = makeStyles((theme) => (
   {

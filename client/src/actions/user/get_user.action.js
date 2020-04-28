@@ -1,12 +1,12 @@
 import axios from 'axios';
-import {GET_ERRORS, GET_USERS} from '../types';
+import {GET_ERRORS, GET_USER} from '../types';
 import {userApiRoutes} from '../../configs/routes';
 
-export const getUsers = () => dispatch => {
-  axios.get(userApiRoutes.USERS_ROUTE)
+export const getUser = (userId) => dispatch => {
+  axios.get(userApiRoutes.USER_ROUTE + `/${userId}`)
   .then(response => {
     dispatch({
-      type: GET_USERS,
+      type: GET_USER,
       payload: response.data
     });
   })

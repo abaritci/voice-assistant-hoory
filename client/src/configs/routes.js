@@ -14,5 +14,6 @@ export const authApiRoutes = {
  */
 
 export const userApiRoutes = {
-  USERS_ROUTE: API_HOST + '/api/users'
+  USERS_ROUTE: API_HOST + '/api/users',
+  USER_ROUTE: API_HOST + '/api/users',
 };

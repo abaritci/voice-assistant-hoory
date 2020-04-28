@@ -6,7 +6,7 @@ import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
 import {green} from "@material-ui/core/colors";
 import Box from "@material-ui/core/Box";
-import {StepContext} from "../../pages/Home";
+import {StepContext} from "../../../context/StepContext";
 import GoogleIcon from '../icons/GoogleIcon';
 import Divider from '@material-ui/core/Divider';
 import clsx from 'clsx';

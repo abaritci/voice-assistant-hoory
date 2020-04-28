@@ -81,6 +81,8 @@ class Router extends Component {
         <PublicRoute path="/login" exact component={Login} isLoggedIn={isLoggedIn}/>
         <PublicRoute path="/" exact component={Home} isLoggedIn={isLoggedIn}/>
         <PrivateRoute path="/dashboard" exact component={Dashboard} isLoggedIn={isLoggedIn}/>
+        <PrivateRoute path="/add-assistant" exact component={Home} isLoggedIn={isLoggedIn}/>
+        <PrivateRoute path="/edit-assistant/:id" exact component={Home} isLoggedIn={isLoggedIn}/>
         <Route path="/404" exact component={NotFoundPage}/>
         <Redirect to='/404'/>
       </Switch>

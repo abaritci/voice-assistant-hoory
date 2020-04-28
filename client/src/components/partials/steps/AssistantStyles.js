@@ -4,7 +4,7 @@ import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
 import {green} from "@material-ui/core/colors";
 import Box from "@material-ui/core/Box";
-import {StepContext} from "../../pages/Home";
+import {StepContext} from "../../../context/StepContext";
 import Radio from '@material-ui/core/Radio';
 import RadioGroup from "@material-ui/core/RadioGroup";
 import FormControlLabel from "@material-ui/core/FormControlLabel";

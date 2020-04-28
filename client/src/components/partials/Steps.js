@@ -3,7 +3,7 @@ import Radio from '@material-ui/core/Radio';
 import RadioGroup from '@material-ui/core/RadioGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormControl from '@material-ui/core/FormControl';
-import {StepContext} from "../pages/Home";
+import {StepContext} from "../../context/StepContext";
 
 export default function Steps() {
   return (
