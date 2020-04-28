@@ -2,6 +2,10 @@
   h6.MuiTypography-root.makeStyles-title-120.MuiTypography-h6 {
     text-align: center;
   }
+  ul.MuiList-root.MuiList-padding {
+    height: 350px;
+    overflow: auto;
+  }
 }
 #add-assistant {
   a.MuiButtonBase-root.MuiButton-root.MuiButton-outlined {
