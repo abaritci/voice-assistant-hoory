@@ -27,6 +27,7 @@ export default function SearchAssistant({search}) {
   const [string, setString] = useState('');
   const changeString = (event) => {
     setString(event.target.value);
+    search(event.target.value);
   };
   return (
     <Paper component="form" className={classes.root}>
@@ -40,8 +41,8 @@ export default function SearchAssistant({search}) {
         className={classes.iconButton}
         aria-label="search"
         onClick={() => {
-        search(string)
-      }}>
+          search(string)
+        }}>
         <SearchIcon/>
       </IconButton>
     </Paper>
