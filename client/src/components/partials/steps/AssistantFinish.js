@@ -43,7 +43,9 @@ export default function AssistantFinish() {
       {({
           name,
           sex,
-          color
+          color,
+          isAuthenticated,
+          isNewAssistant
         }) => (
         <div id='assistant-finish' className={classes.root}>
           <Grid container
@@ -71,10 +73,17 @@ export default function AssistantFinish() {
                   justify="center"
                   alignItems="center">
               <ThemeProvider theme={theme}>
-                <Typography variant="subtitle1">
+                {isAuthenticated ? isNewAssistant ?
+                  <Typography variant="subtitle1">
+                    You have successfully created the widget for <span style={{fontWeight: 600}}>{name}</span>!
+                  </Typography> : <Typography variant="subtitle1">
+                    You have successfully updated <span style={{fontWeight: 600}}>{name}'s</span> widget!
+                  </Typography> :
+                  <Typography variant="subtitle1">
                   You have successfully setup the widget on your website!
                   Proced to Admin Dashboard to start training <span style={{fontWeight: 600}}>{name}</span>
-                </Typography>
+                </Typography>}
+
               </ThemeProvider>
             </Grid>
             <Grid container
