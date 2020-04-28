@@ -4,7 +4,7 @@ const userModel = require('../models/user.model');
 
 class User_service {
   getUsers(req, res, next) {
-    userModel.getUsers(res.locals.userId).then((users) => {
+    userModel.getUsers(res.locals.userId, req.query).then((users) => {
       res.json(users);
     }).catch(error => next(error));
   }

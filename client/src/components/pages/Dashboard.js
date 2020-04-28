@@ -22,7 +22,11 @@ class Dashboard extends Component {
     return (
       <div id='dashboard'>
         <Navbar/>
-        <UsersList data={users} deleteUser={(id) => this.props.deleteUser(id)}/>
+        <UsersList
+          data={users}
+          deleteUser={(id) => this.props.deleteUser(id)}
+          searchAssistant={(string) => this.props.getUsers(string)}
+        />
       </div>
     );
   }

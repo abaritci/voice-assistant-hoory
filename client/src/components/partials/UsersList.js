@@ -14,8 +14,9 @@ import MoreVertIcon from '@material-ui/icons/MoreVert';
 import AddIcon from '@material-ui/icons/Add';
 import AssistantAvatar from "./steps/AssistantAvatar";
 import "../../assets/scss/UserLists.scss";
-import { Link } from 'react-router-dom';
+import {Link} from 'react-router-dom';
 import Button from '@material-ui/core/Button';
+import SearchAssistant from "./SearchAssistant";
 
 const useStyles = makeStyles((theme) => (
   {
@@ -33,7 +34,7 @@ const useStyles = makeStyles((theme) => (
     },
   }));
 
-export default function UsersList({data, deleteUser, editUser}) {
+export default function UsersList({data, deleteUser, searchAssistant}) {
   const classes = useStyles();
   const [users, setUsers] = useState([]);
   const [actions, setActions] = useState({});
@@ -43,7 +44,7 @@ export default function UsersList({data, deleteUser, editUser}) {
   
   useEffect(() => {
     setUsers(data);
-  },[data]);
+  }, [data]);
   
   return (
     <div id="users-list" className={classes.root}>
@@ -53,8 +54,11 @@ export default function UsersList({data, deleteUser, editUser}) {
             Assistants
           </Typography>
           <div className={classes.demo}>
+            <div id="search-assistant">
+              <SearchAssistant search={(string) => searchAssistant(string)}/>
+            </div>
             <List>
-              {users.map((user,key) => (
+              {users.map((user, key) => (
                 <ListItem key={key}>
                   <ListItemAvatar>
                     <AssistantAvatar isSelected={false} sex={user.sex} color={user.color}/>

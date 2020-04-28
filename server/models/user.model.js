@@ -8,10 +8,16 @@ class UserModel {
   /**
    * Get all users without logged in user
    * @param userId
+   * @param query
    * @returns {void|*|number|bigint}
    */
-  getUsers(userId) {
-    return this.userSchema.find({_id: {$nin: userId}});
+  getUsers(userId, query) {
+    const {search} = query;
+    const condition = search ? {$or: [{name: {'$regex': search}}, {email: {'$regex': search}}, {firstName: {'$regex': search}}, {lastName: {'$regex': search}}, {lastName: {'$regex': search}}]} : {};
+    return this.userSchema.find({
+      _id: {$nin: userId},
+      ...condition
+    });
   }
   
   /**
@@ -29,7 +35,7 @@ class UserModel {
    * @param data
    */
   editUser(userId, data) {
-    return this.userSchema.findByIdAndUpdate({_id: userId},data);
+    return this.userSchema.findByIdAndUpdate({_id: userId}, data);
   }
   
   /**
