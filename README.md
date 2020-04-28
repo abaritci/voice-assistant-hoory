@@ -1,9 +1,9 @@
 # Voice Assistant Hoory
 Voice assistant hoory is simple project with Node.js(Express), React and MongoDB.
-##Installation
-###Database
+## Installation
+### Database
 Need to install and run MongoDB
-###Server
+### Server
 Install packages
 ```bash
 npm install
@@ -12,7 +12,7 @@ Run Node.js
 ```bash
 nodemon app
 ```
-###Client
+### Client
 Install packages
 ```bash
 npm install
