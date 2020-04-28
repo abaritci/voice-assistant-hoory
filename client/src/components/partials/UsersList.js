@@ -10,6 +10,8 @@ import IconButton from '@material-ui/core/IconButton';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import DeleteIcon from '@material-ui/icons/Delete';
+import EditIcon from '@material-ui/icons/Edit';
+import MoreVertIcon from '@material-ui/icons/MoreVert';
 import AssistantAvatar from "./steps/AssistantAvatar";
 import "../../assets/scss/UserLists.scss";
 
@@ -29,9 +31,13 @@ const useStyles = makeStyles((theme) => (
     },
   }));
 
-export default function UsersList({data, deleteUser}) {
+export default function UsersList({data, deleteUser, editUser}) {
   const classes = useStyles();
   const [users, setUsers] = useState([]);
+  const [actions, setActions] = useState({});
+  const showActions = (userId) => {
+    setActions({[userId] : !actions[userId]});
+  };
   
   useEffect(() => {
     setUsers(data);
@@ -56,8 +62,17 @@ export default function UsersList({data, deleteUser}) {
                     secondary={user.firstName + ' ' + user.lastName}
                   />
                   <ListItemSecondaryAction>
-                    <IconButton edge="end" aria-label="delete" onClick={() => deleteUser(user._id)}>
+                    {actions[user._id] && <IconButton edge="end" aria-label="delete" onClick={() => editUser(user._id)}>
+                      <EditIcon/>
+                    </IconButton>}
+                    {actions[user._id] && <IconButton edge="end" aria-label="delete" onClick={() => deleteUser(user._id)}>
                       <DeleteIcon/>
+                    </IconButton>}
+                    <IconButton edge="end" aria-label="delete"
+                                onMouseEnter={() => showActions(user._id)}
+                                onMouseDown={() => showActions(user._id)}
+                                >
+                      <MoreVertIcon/>
                     </IconButton>
                   </ListItemSecondaryAction>
                 </ListItem>
